@@ -34,7 +34,7 @@ export class AuthorsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return `This action removes a #${id} author`;
+  delete(@Param('id') id: string) {
+    return this.authorsService.delete(id);
   }
 }
