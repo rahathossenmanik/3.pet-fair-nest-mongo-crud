@@ -5,12 +5,16 @@ import { Author, AuthorDocument } from 'src/schemas/authors.schema';
 
 @Injectable()
 export class AuthorService {
-  private readonly authors: Author[] = [];
   constructor(
     @InjectModel(Author.name)
     private authorModel: Model<AuthorDocument>
   ) {}
+
   async findAll(): Promise<Author[]> {
     return this.authorModel.find().exec();
+  }
+
+  async findById(id: string): Promise<Author> {
+    return this.authorModel.findById(id).exec();
   }
 }

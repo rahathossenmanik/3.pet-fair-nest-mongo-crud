@@ -9,7 +9,7 @@ export class Author {
   givenName: string;
 
   @Prop()
-  lastName: number;
+  lastName: string;
 
   @Prop()
   country: string;

@@ -23,14 +23,9 @@ export class AuthorsController {
     return this.authorsService.findAll();
   }
 
-  @Get()
-  findAllFiltered(@Req() request: Request): string {
-    return 'This action returns all authors';
-  }
-
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return `This action returns a #${id} author`;
+  findById(@Param('id') id: string) {
+    return this.authorsService.findById(id);
   }
 
   @Put(':id')
