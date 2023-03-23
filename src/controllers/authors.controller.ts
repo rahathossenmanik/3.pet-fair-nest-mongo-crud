@@ -1,5 +1,7 @@
 import { Controller, Get, Req, Query, Post, Body, Put, Param, Delete } from '@nestjs/common';
 import { Request } from 'express';
+import { Author } from 'src/schemas/authors.schema';
+import { AuthorService } from 'src/services/authors.service';
 
 class AuthorDto {
   name: string;
@@ -9,14 +11,16 @@ class AuthorDto {
 
 @Controller('authors')
 export class AuthorsController {
+  constructor(private authorsService: AuthorService) {}
+
   @Post()
   create(@Body() createAuthorDto: AuthorDto) {
     return 'This action adds a new author';
   }
 
   @Get()
-  findAll(@Query() query: any) {
-    return `This action returns all authors (limit: ${query.limit} items)`;
+  async findAll(): Promise<Author[]> {
+    return this.authorsService.findAll();
   }
 
   @Get()
