@@ -1,7 +1,9 @@
 import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { Author } from 'src/schemas/authors.schema';
 import { AuthorService } from 'src/services/authors.service';
 
+@ApiTags('Authors')
 @Controller('authors')
 export class AuthorsController {
   constructor(private authorsService: AuthorService) {}
