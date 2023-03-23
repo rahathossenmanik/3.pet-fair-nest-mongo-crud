@@ -13,11 +13,6 @@ class AuthorDto {
 export class AuthorsController {
   constructor(private authorsService: AuthorService) {}
 
-  @Post()
-  create(@Body() createAuthorDto: AuthorDto) {
-    return 'This action adds a new author';
-  }
-
   @Get()
   async findAll(): Promise<Author[]> {
     return this.authorsService.findAll();
@@ -26,6 +21,11 @@ export class AuthorsController {
   @Get(':id')
   findById(@Param('id') id: string) {
     return this.authorsService.findById(id);
+  }
+
+  @Post()
+  create(@Body() author: Author) {
+    return this.authorsService.create(author);
   }
 
   @Put(':id')
