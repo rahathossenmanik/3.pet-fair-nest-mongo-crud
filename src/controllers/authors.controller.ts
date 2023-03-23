@@ -1,13 +1,6 @@
-import { Controller, Get, Req, Query, Post, Body, Put, Param, Delete } from '@nestjs/common';
-import { Request } from 'express';
+import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
 import { Author } from 'src/schemas/authors.schema';
 import { AuthorService } from 'src/services/authors.service';
-
-class AuthorDto {
-  name: string;
-  age: number;
-  breed: string;
-}
 
 @Controller('authors')
 export class AuthorsController {
