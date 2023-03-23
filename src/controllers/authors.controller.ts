@@ -29,8 +29,8 @@ export class AuthorsController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateAuthorDto: AuthorDto) {
-    return `This action updates a #${id} author`;
+  update(@Param('id') id: string, @Body() author: Author) {
+    return this.authorsService.update(id, author);
   }
 
   @Delete(':id')

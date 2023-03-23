@@ -22,4 +22,9 @@ export class AuthorService {
     const createdAuthor = new this.authorModel(author);
     return createdAuthor.save();
   }
+
+  async update(id: string, author: Author): Promise<Author> {
+    await this.authorModel.findByIdAndUpdate(id, author);
+    return this.authorModel.findById(id).exec();
+  }
 }
