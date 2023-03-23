@@ -2,8 +2,6 @@ require('dotenv').config({ path: '.env' });
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthorsController } from 'src/controllers/authors.controller';
-import { AppController } from 'src/controllers/app.controller';
-import { AppService } from 'src/services/app.service';
 import { AuthorSchema } from 'src/schemas/authors.schema';
 import { AuthorService } from 'src/services/authors.service';
 import { BooksController } from 'src/controllers/books.controller';
@@ -20,7 +18,7 @@ const mongo_uri = process.env.DATABASE_URL;
       { name: 'Book', schema: BookSchema }
     ])
   ],
-  controllers: [AppController, AuthorsController, BooksController],
-  providers: [AppService, AuthorService, BookService]
+  controllers: [AuthorsController, BooksController],
+  providers: [AuthorService, BookService]
 })
 export class AppModule {}
