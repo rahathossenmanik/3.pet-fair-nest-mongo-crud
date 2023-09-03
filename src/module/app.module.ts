@@ -1,12 +1,15 @@
 require('dotenv').config({ path: '.env' });
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AuthorsController } from 'src/controllers/authors.controller';
-import { AuthorSchema } from 'src/schemas/authors.schema';
-import { AuthorService } from 'src/services/authors.service';
-import { BooksController } from 'src/controllers/books.controller';
-import { BookService } from 'src/services/books.service';
-import { BookSchema } from 'src/schemas/books.schema';
+import { CharacterSchema } from 'src/schemas/character.schema';
+import { PetTypeSchema } from 'src/schemas/petType.schema';
+import { PetSchema } from 'src/schemas/pet.schema';
+import { CharactersController } from 'src/controllers/character.controller';
+import { PetTypesController } from 'src/controllers/petType.controller';
+import { PetsController } from 'src/controllers/pet.controller';
+import { CharacterService } from 'src/services/character.service';
+import { PetTypeService } from 'src/services/petType.service';
+import { PetService } from 'src/services/pet.service';
 
 const mongo_uri = process.env.DATABASE_URL;
 
@@ -14,11 +17,12 @@ const mongo_uri = process.env.DATABASE_URL;
   imports: [
     MongooseModule.forRoot(mongo_uri),
     MongooseModule.forFeature([
-      { name: 'Author', schema: AuthorSchema },
-      { name: 'Book', schema: BookSchema }
+      { name: 'Character', schema: CharacterSchema },
+      { name: 'PetType', schema: PetTypeSchema },
+      { name: 'Pet', schema: PetSchema }
     ])
   ],
-  controllers: [AuthorsController, BooksController],
-  providers: [AuthorService, BookService]
+  controllers: [CharactersController, PetTypesController, PetsController],
+  providers: [CharacterService, PetTypeService, PetService]
 })
 export class AppModule {}
